@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lesson5LabB.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="DarkGray" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <x:Int16 x:Key="btnFontSize">20</x:Int16>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="U.S. Presidents Quiz" x:Name="TitleLbl" FontSize="32" Padding="30,24,50,0" />
+        <Label x:Name="QuestionLbl" FontSize="24" Padding="30,24,50,0" />
+        <Button FontSize="{StaticResource btnFontSize}" x:Name="Btn1" Pressed="CheckAnswer" />
+        <Button FontSize="{StaticResource btnFontSize}" x:Name="Btn2" Pressed="CheckAnswer" />
+    </StackLayout>
+
+</ContentPage>
