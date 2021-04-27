@@ -19,7 +19,8 @@ namespace Lesson5LabB
             "Which president turned down offers to play professional football?", // GERALD FORD, Barack Obama
             "Which is the only president with a PHD?" // WOODROW WILSON, Warren G. Harding
         };
-
+        
+        // swipe left
         List<string> button1AnswersList = new List<string>
         {
             "",
@@ -30,6 +31,7 @@ namespace Lesson5LabB
             "Warren G. Harding"
         };
 
+        // swipe right
         List<string> button2AnswersList = new List<string>
         {
             "",
@@ -39,6 +41,7 @@ namespace Lesson5LabB
             "Gerald Ford",
             "Woodrow Wilson"
         };
+        
 
         List<string> correctAnswersList = new List<string>
         {
@@ -50,14 +53,30 @@ namespace Lesson5LabB
             "Woodrow Wilson"
         };
 
+        List<string> imageNamesList = new List<string>
+        {
+            "",
+            "flag.png",
+            "twoTerms.png",
+            "impeach.jpg",
+            "football.jpg",            
+            "phd.jpg"
+        };
+
 
         int score = 0;
         int qNum = 1;
+        int imgNum = 1;
 
-        private void CheckAnswer(Object sender, System.EventArgs e)
+        private void CheckAnswer(Object sender, SwipedEventArgs e)
         {
-            Button senderButton = sender as Button;
-            if (senderButton.Text.Equals(correctAnswersList[qNum]))
+            //Button senderButton = sender as Button;
+            string direction = e.Direction.ToString();
+            if (direction.Equals("Left") && (qNum == 1 || qNum == 3))
+            {
+                score++;
+            }
+            if (direction.Equals("Right") && (qNum == 2 || qNum == 4 || qNum == 5))
             {
                 score++;
             }
@@ -74,16 +93,19 @@ namespace Lesson5LabB
 
         private void ShowNextQuestion()
         {
+            Image.Source = imageNamesList[imgNum];
             QuestionLbl.Text = questionsList[qNum];
-            Btn1.Text = button1AnswersList[qNum];
-            Btn2.Text = button2AnswersList[qNum];
+            SwipeLeftFor.Text = "Swipe left for " + button1AnswersList[qNum];
+            SwipeRightFor.Text = "Swipe right for " + button2AnswersList[qNum];
+            imgNum++;
         }
 
         private void EndQuiz()
         {
             QuestionLbl.Text = $"Your Score: {score}/5";
-            Btn1.IsVisible = false;
-            Btn2.IsVisible = false;
+            SwipeLeftFor.IsVisible = false;
+            SwipeRightFor.IsVisible = false;
+            Image.IsVisible = false;
         }
 
         public MainPage()

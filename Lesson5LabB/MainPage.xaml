@@ -4,22 +4,33 @@
              x:Class="Lesson5LabB.MainPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="White" />
-            </Style>
+            <Style TargetType="Label" x:Key="padding">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Padding" Value="30,24,50,0" />
+            </Style><!--
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="DarkGray" />
                 <Setter Property="TextColor" Value="White" />
             </Style>
-            <x:Int16 x:Key="btnFontSize">20</x:Int16>
+            <x:Int16 x:Key="btnFontSize">20</x:Int16>-->
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <StackLayout>
-        <Label Text="U.S. Presidents Quiz" x:Name="TitleLbl" FontSize="32" Padding="30,24,50,0" />
-        <Label x:Name="QuestionLbl" FontSize="24" Padding="30,24,50,0" />
+        <Label HorizontalOptions="Center" Style="{StaticResource padding}" Text="U.S. Presidents Quiz" x:Name="TitleLbl" FontSize="30" />
+        <Image x:Name="Image" WidthRequest="250" HeightRequest="175" Source="" HorizontalOptions="Center" />
+        <Label  x:Name="QuestionLbl" FontSize="24" HorizontalOptions="Center" />
+        <Label x:Name="SwipeLeftFor" FontSize="18" HorizontalOptions="Center" />
+        <Label x:Name="SwipeRightFor" FontSize="18" HorizontalOptions="Center" />
+        <BoxView Color="Teal" WidthRequest="350" HeightRequest="250" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <BoxView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left" Swiped="CheckAnswer" />
+                <SwipeGestureRecognizer Direction="Right" Swiped="CheckAnswer" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+        <!--
         <Button FontSize="{StaticResource btnFontSize}" x:Name="Btn1" Pressed="CheckAnswer" />
-        <Button FontSize="{StaticResource btnFontSize}" x:Name="Btn2" Pressed="CheckAnswer" />
+        <Button FontSize="{StaticResource btnFontSize}" x:Name="Btn2" Pressed="CheckAnswer" /> -->
     </StackLayout>
 
 </ContentPage>
